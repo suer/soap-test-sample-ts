@@ -9,19 +9,19 @@ npm i
 ## generate client code
 
 ```bash
-npx wsdl-tsclient mock-server/hello.wsdl -o generated
+npx wsdl-tsc client --wsdl-source mock-server/hello.wsdl --client-dir ./generated/hello --import-extensions bare
 ```
 
 ## run mock server
 
 ```bash
-npx ts-node mock-server/server.ts
+npx tsx mock-server/server.ts
 ```
 
 ## run client program sample
 
 ```bash
-npx ts-node index.ts
+npx tsx index.ts
 ```
 
 ## run test samples
