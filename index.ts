@@ -8,7 +8,7 @@ async function main() {
     client.setEndpoint("http://localhost:8080/hello");
 
     // soap client exposes methods as client.ServiceName.PortName.method()
-    const { HelloPort } = (client as unknown as { HelloService: HelloService }).HelloService;
+    const { HelloPort } = client.HelloService;
 
     HelloPort.sayHello({name: "foo"}, (err, result) => {
         if (err) {

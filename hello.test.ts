@@ -8,7 +8,7 @@ describe("HelloService", () => {
         const client = await createClientAsync("http://localhost:8080/hello?wsdl");
         client.setEndpoint("http://localhost:8080/hello");
 
-        const { HelloPort } = (client as unknown as { HelloService: HelloService }).HelloService;
+        const { HelloPort } = client.HelloService;
         const args = {name: "foo"};
         const result = await promisify(HelloPort.sayHello.bind(HelloPort))(args);
 
