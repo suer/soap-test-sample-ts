@@ -1,8 +1,10 @@
 import * as http from "http";
 import * as fs from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
 import * as soap from "soap";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const wsdl = fs.readFileSync(path.join(__dirname, "hello.wsdl"), "utf8");
 
 const service = {
