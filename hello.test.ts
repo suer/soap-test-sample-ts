@@ -1,18 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { promisify } from "util";
-import { createClientAsync } from "./generated/hello";
-import { HelloService } from "./generated/hello/services/HelloService";
+import { HelloService } from "./generated/hello/client";
 
 describe("HelloService", () => {
     it("sayHello が正しいメッセージを返す", async () => {
-        const client = await createClientAsync("http://localhost:8080/hello?wsdl");
-        client.setEndpoint("http://localhost:8080/hello");
+        const client = new HelloService({ source: "http://localhost:8080/hello?wsdl" });
+        const result = await client.sayHello({ name: "foo" });
 
-        const { HelloPort } = client.HelloService;
-        const args = {name: "foo"};
-        const result = await promisify(HelloPort.sayHello.bind(HelloPort))(args);
-
-        expect(result.message).toBe("Hello, foo!");
-
+        expect(result.response.message).toBe("Hello, foo!");
     });
 });
