@@ -1,5 +1,11 @@
 # SOAP Client and Test Sample
 
+## install dependencies
+
+```bash
+npm i
+```
+
 ## generate client code
 
 ```bash
